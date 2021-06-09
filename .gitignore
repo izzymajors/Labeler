@@ -1,0 +1,4 @@
+.env
+/venv/
+/data/data_cleaning.py
+/data/raw_data.csv

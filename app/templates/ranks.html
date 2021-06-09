@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1 class="heading">Human Rights First: Blue Witness</h1>
+<h2 class="sub-heading">Police Violence Ranked Reports</h2>
+<ul>
+    <li>Rank 0: No Police Presence</li>
+    <li>Rank 1: Non-violent Police Presence</li>
+    <li>Rank 2: Open Handed (Arm Holds & Pushing)</li>
+    <li>Rank 3: Blunt Force Trauma (Batons & Shields)</li>
+    <li>Rank 4: Chemical & Electric Weapons (Tasers & Pepper Spray)</li>
+    <li>Rank 5: Lethal Force (Guns & Explosives)</li>
+</ul>
+<table>
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Tweet</th>
+            <th scope="col">Rank</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for tweet in tweets %}
+        <tr>
+        {% for cell in tweet %}
+            <td>{{ cell }}</td>
+        {% endfor %}
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

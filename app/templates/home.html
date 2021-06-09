@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1 class="heading">Human Rights First: Blue Witness</h1>
+<h2 class="sub-heading">Police Violence Ranking System</h2>
+<ul>
+    <li>Rank 0: No Police Presence</li>
+    <li>Rank 1: Non-violent Police Presence</li>
+    <li>Rank 2: Open Handed (Arm Holds & Pushing)</li>
+    <li>Rank 3: Blunt Force Trauma (Batons & Shields)</li>
+    <li>Rank 4: Chemical & Electric Weapons (Tasers & Pepper Spray)</li>
+    <li>Rank 5: Lethal Force (Guns & Explosives)</li>
+</ul>
+<p>To contribute, please rank this random tweet:</p>
+<blockquote><p>{{ tweet }}</p></blockquote>
+<form id="form" method="post" action="{{ url_for('home') }}">
+    <p><span>Rank:</span><input name="rank" id="rank" autofocus="autofocus" />
+    <input hidden="hidden" name="tweet" id="tweet" value="{{ tweet }}" />
+    <button type="submit" id="submit" name="submit">Submit</button></p>
+    <span class="clear"></span>
+</form>
+{% endblock %}

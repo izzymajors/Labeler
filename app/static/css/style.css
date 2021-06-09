@@ -108,7 +108,7 @@ blockquote {
 }
 blockquote p {
     color: #6a8759;
-    font-size: .8em;
+    font-size: 1em;
     font-family: Monaco;
     margin: 0;
     max-width: 760px;
@@ -181,4 +181,7 @@ footer p {
 }
 .container {
     margin-bottom: 120px;
+}
+li {
+    font-size: .8em;
 }

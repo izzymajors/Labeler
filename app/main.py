@@ -13,7 +13,7 @@ random_tweet = RandomValue(pd.read_csv('app/data/data.csv')['tweets'])
 def home():
     rank = request.form.get("rank")
     tweet = request.form.get("tweet")
-    if rank and tweet:
+    if rank in {'0', '1', '2', '3', '4', '5'} and tweet:
         insert_data(tweet, int(rank))
     return render_template(
         "home.html",

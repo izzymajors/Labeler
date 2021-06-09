@@ -69,10 +69,6 @@ def get_last_id() -> int:
 
 
 if __name__ == '__main__':
-    # initialize_db()
-    # reset_table()
-    # insert_data("Test tweet", 0)
-
     print("Index, Tweet, Rank")
     for row in load_data():
         print(', '.join(map(str, row)))

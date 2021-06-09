@@ -1,14 +1,15 @@
 #form {
     width: 860px;
-    padding: 20px;
+    padding: 10px 10px 10px 45px;
     background-image: url(/static/images/circle.png);
     background-repeat: no-repeat;
     background-position: right;
     margin-bottom: 60px;
 }
 #form p {
-    width: 240px;
+    max-width: 400px;
     margin: 10px 60px;
+    min-width: 400px;
 }
 #form span {
     margin-right: 20px;

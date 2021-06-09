@@ -9,7 +9,7 @@ APP = Flask(__name__)
 all_tweets = pd.read_csv('app/data/data.csv')['tweets']
 
 
-def random_tweet():
+def random_tweet() -> str:
     return random.choice(all_tweets)
 
 

@@ -11,6 +11,7 @@ table_name = "training"
 
 
 def db_action(sql_action: str):
+    """ DB Setter - Performs a DB action returns None """
     conn = psycopg2.connect(db_url)
     curs = conn.cursor()
     curs.execute(sql_action)
@@ -20,6 +21,7 @@ def db_action(sql_action: str):
 
 
 def db_query(sql_query) -> list:
+    """ DB Getter - Returns query results as a list """
     conn = psycopg2.connect(db_url)
     curs = conn.cursor()
     curs.execute(sql_query)
@@ -30,6 +32,7 @@ def db_query(sql_query) -> list:
 
 
 def initialize_db():
+    """ Database table initialization - only required once """
     db_action(f"""CREATE TABLE IF NOT EXISTS {table_name} (
     id SERIAL PRIMARY KEY NOT NULL,
     tweets TEXT NOT NULL,
@@ -37,24 +40,30 @@ def initialize_db():
 
 
 def insert_data(tweet: str, label: int):
+    """ Inserts a new row """
     db_action(f"""INSERT INTO {table_name} 
     (tweets, labels) 
     VALUES ('{tweet}',{label});""")
 
 
 def load_data() -> list:
-    return db_query(f"SELECT * FROM {table_name};")
+    """ Returns the most recent 20 rows in reverse chronological order """
+    return db_query(f"""SELECT * FROM {table_name}
+    ORDER BY id DESC LIMIT 20;""")
 
 
 def load_by_id(idx: int) -> list:
+    """ Returns a row by the primary key: id """
     return db_query(f"SELECT * FROM {table_name} WHERE id = {idx};")
 
 
 def reset_table():
+    """ DANGER!!! This will remove ALL rows in the database """
     db_action(f"TRUNCATE TABLE {table_name} RESTART IDENTITY;")
 
 
 def delete_by_id(idx: int):
+    """ Deletes a row by the primary key: id """
     db_action(f"DELETE FROM {table_name} WHERE id = {idx};")
 
 

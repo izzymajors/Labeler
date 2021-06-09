@@ -68,6 +68,16 @@ def get_last_id() -> int:
     return results or 0
 
 
+def delete_by_id(idx):
+    conn = psycopg2.connect(db_url)
+    curs = conn.cursor()
+    query = f"DELETE FROM {table_name} WHERE id = {idx};"
+    curs.execute(query)
+    conn.commit()
+    curs.close()
+    conn.close()
+
+
 if __name__ == '__main__':
     print("Index, Tweet, Rank")
     for row in load_data():

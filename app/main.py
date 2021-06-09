@@ -1,12 +1,16 @@
+import random
+
 from flask import Flask, render_template, request
 import pandas as pd
-
-from Fortuna import RandomValue
 
 from app.db_ops import insert_data, load_data
 
 APP = Flask(__name__)
-random_tweet = RandomValue(pd.read_csv('app/data/data.csv')['tweets'])
+all_tweets = pd.read_csv('app/data/data.csv')['tweets']
+
+
+def random_tweet():
+    return random.choice(all_tweets)
 
 
 @APP.route("/", methods=['GET', 'POST'])

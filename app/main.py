@@ -2,6 +2,8 @@ import random
 
 from flask import Flask, render_template, request
 import pandas as pd
+import plotly.express as px
+import plotly.graph_objects as go
 
 from app.db_ops import insert_data, load_data
 
@@ -27,8 +29,27 @@ def home():
 
 @APP.route("/ranks/")
 def ranks():
+    labels = ['Rank 0', 'Rank 1', 'Rank 2', 'Rank 3', 'Rank 4', 'Rank 5']
+    df = pd.DataFrame(load_data(1000), columns=['id', 'tweet', 'rank'])
+    values = df['rank'].value_counts().sort_index()
+    data = [go.Pie(
+        labels=labels,
+        values=values,
+        textinfo='label+percent',
+        showlegend=False,
+    )]
+    layout = go.Layout(
+        template='plotly_dark',
+        paper_bgcolor='rgba(0,0,0,0)',
+        plot_bgcolor='rgba(0,0,0,0)',
+        colorway=px.colors.qualitative.Antique,
+        height=600,
+        width=750,
+    )
+    fig = go.Figure(data=data, layout=layout)
     return render_template(
         "ranks.html",
+        graph_json=fig.to_json(),
         tweets=load_data(20),
     )
 

@@ -112,7 +112,7 @@ blockquote cite:before {
     content: "~";
 }
 .container {
-    width: 800px;
+    width: 1000px;
 }
 .container ul {
     margin: 0 0 40px 0;
@@ -162,4 +162,7 @@ footer p {
 }
 .container {
     margin-bottom: 60px;
+}
+.modebar-container {
+    display: none;
 }

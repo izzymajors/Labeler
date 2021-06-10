@@ -67,7 +67,7 @@ def delete_by_id(idx: int):
     db_action(f"DELETE FROM {table_name} WHERE id = {idx};")
 
 
-if __name__ == '__main__':
-    print("Index, Tweet, Rank")
-    for row in load_data():
-        print(', '.join(map(str, row)))
+def update_rank_by_id(idx, rank):
+    db_action(f"""UPDATE {table_name} 
+    SET labels = {rank} 
+    WHERE id = {idx};""")

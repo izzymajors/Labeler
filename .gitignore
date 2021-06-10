@@ -1,10 +1,11 @@
-.env
-/venv/
-/data/data_cleaning.py
-/data/raw_data.csv
-
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+
+# Private Project Files
+.env
+/venv/
+/data/data_cleaning.py
+/data/raw_data.csv
 /scratch.py

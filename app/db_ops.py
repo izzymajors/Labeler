@@ -46,7 +46,7 @@ def insert_data(tweet: str, label: int):
     VALUES ('{tweet}',{label});""")
 
 
-def load_data(n_rows) -> list:
+def load_data(n_rows: int) -> list:
     """ Returns the most recent n_rows in reverse chronological order """
     return db_query(f"""SELECT * FROM {table_name}
     ORDER BY id DESC LIMIT {n_rows};""")

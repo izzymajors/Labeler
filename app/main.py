@@ -29,7 +29,7 @@ def home():
 def ranks():
     return render_template(
         "ranks.html",
-        tweets=load_data(),
+        tweets=load_data(20),
     )
 
 

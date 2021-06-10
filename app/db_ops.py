@@ -46,10 +46,10 @@ def insert_data(tweet: str, label: int):
     VALUES ('{tweet}',{label});""")
 
 
-def load_data() -> list:
-    """ Returns the most recent 20 rows in reverse chronological order """
+def load_data(n_rows) -> list:
+    """ Returns the most recent n_rows in reverse chronological order """
     return db_query(f"""SELECT * FROM {table_name}
-    ORDER BY id DESC LIMIT 20;""")
+    ORDER BY id DESC LIMIT {n_rows};""")
 
 
 def load_by_id(idx: int) -> list:

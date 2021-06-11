@@ -8,11 +8,15 @@ import plotly.graph_objects as go
 from app.db_ops import insert_data, load_data
 
 APP = Flask(__name__)
-all_tweets = pd.read_csv('app/data/data.csv')['tweets']
+tweets = pd.read_csv('app/data/data.csv')['tweets']
+pb_2020 = pd.read_csv('app/data/pb2020-data.csv')['tweets']
 
 
 def random_tweet() -> str:
-    return random.choice(all_tweets)
+    if random.randint(0, 1) == 0:
+        return random.choice(tweets)
+    else:
+        return random.choice(pb_2020)
 
 
 @APP.route("/", methods=['GET', 'POST'])

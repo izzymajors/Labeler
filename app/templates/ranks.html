@@ -1,14 +1,14 @@
 {% extends "layout.html" %}
 {% block content %}
 <h1 class="heading">Human Rights First: Blue Witness</h1>
-<h2 class="sub-heading">Police Violence Ranked Report Stats</h2>
+<h2 class="sub-heading">Ranked Report Statistics</h2>
 <div id= "chart"></div>
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <script type="text/javascript">
-  var graphs = {{graph_json | safe}};
-  Plotly.plot('chart',graphs,{});
+  var graphs = {{ graph_json | safe }};
+  Plotly.plot('chart', graphs, {});
 </script>
-<h3 class="sub-heading">Most Recently Labeled Reports</h3>
+<h2 class="sub-heading">Recently Labeled Reports</h2>
 <table>
     <thead>
         <tr>

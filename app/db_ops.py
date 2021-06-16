@@ -41,9 +41,11 @@ def initialize_db():
 
 def insert_data(tweet: str, label: int):
     """ Inserts a new row """
-    db_action(f"""INSERT INTO {table_name} 
-    (tweets, labels) 
-    VALUES ('{tweet}',{label});""")
+    hash_set = {hash(row[1]) for row in load_data(1000)}
+    if hash(tweet) not in hash_set:
+        db_action(f"""INSERT INTO {table_name} 
+        (tweets, labels) 
+        VALUES ('{tweet}',{label});""")
 
 
 def load_data(n_rows: int) -> list:

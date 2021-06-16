@@ -1,7 +1,6 @@
 import os
 
 import psycopg2
-import psycopg2.extras
 from dotenv import load_dotenv
 
 
@@ -73,3 +72,14 @@ def update_rank_by_id(idx, rank):
     db_action(f"""UPDATE {table_name} 
     SET labels = {rank} 
     WHERE id = {idx};""")
+
+
+def rank_counts():
+    return [itm[0] for itm in db_query(f"""SELECT COUNT( labels ) 
+    FROM {table_name}
+    GROUP BY labels
+    ORDER BY labels;""")]
+
+
+if __name__ == '__main__':
+    print(rank_counts())

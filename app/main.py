@@ -5,7 +5,7 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 
-from app.db_ops import insert_data, load_data
+from app.db_ops import insert_data, load_data, rank_counts
 
 APP = Flask(__name__)
 tweets = pd.read_csv('app/data/data.csv')['tweets']
@@ -34,11 +34,9 @@ def home():
 @APP.route("/ranks/")
 def ranks():
     labels = ['Rank 0', 'Rank 1', 'Rank 2', 'Rank 3', 'Rank 4', 'Rank 5']
-    df = pd.DataFrame(load_data(1000), columns=['id', 'tweet', 'rank'])
-    values = df['rank'].value_counts().sort_index()
     data = [go.Pie(
         labels=labels,
-        values=values,
+        values=rank_counts(),
         textinfo='label+percent',
         showlegend=False,
     )]

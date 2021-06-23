@@ -1,21 +1,24 @@
 #form {
-    width: 860px;
+    max-width: 1200px;
+    min-width: 400px
     padding: 10px 10px 10px 45px;
     margin-bottom: 60px;
 }
 #form p {
     max-width: 400px;
-    margin: 10px 60px;
+    margin: 10px 180px;
     min-width: 400px;
 }
 #form span {
-    margin-right: 20px;
+    margin-right: 8%;
 }
 #form input {
-    text-align: center;
+    margin: 0%;
+    text-align: left;
 }
 #form button#submit {
-    margin-left: 20px;
+   margin-left: 10px;
+   
 }
 table {
     width: 800px;
@@ -40,4 +43,3 @@ table tbody tr:nth-of-type(1) {
 #chart {
     margin-top: -60px;
     margin-bottom: -40px;
-}
